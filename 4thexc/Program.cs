@@ -71,6 +71,7 @@ namespace _4thexc
                         int ss = 0;
                         try
                         {
+                            if (place[i - 1, j] != "-1")
                             ss += int.Parse(place[i - 1, j]);
                         }
                         catch (IndexOutOfRangeException)
@@ -79,7 +80,8 @@ namespace _4thexc
                         };
                         try
                         {
-                            ss += int.Parse(place[i + 1, j]);
+                            if (place[i + 1, j] != "-1")
+                                ss += int.Parse(place[i + 1, j]);
                         }
                         catch (IndexOutOfRangeException)
                         {
@@ -87,7 +89,8 @@ namespace _4thexc
                         };
                         try
                         {
-                            ss += int.Parse(place[i, j - 1]);
+                            if (place[i , j-1] != "-1")
+                                ss += int.Parse(place[i, j - 1]);
                         }
                         catch (IndexOutOfRangeException)
                         {
@@ -95,7 +98,44 @@ namespace _4thexc
                         };
                         try
                         {
-                            ss += int.Parse(place[i, j + 1]);
+                            if (place[i , j+1] != "-1")
+                                ss += int.Parse(place[i, j + 1]);
+                        }
+                        catch (IndexOutOfRangeException)
+                        {
+
+                        };
+                        try
+                        {
+                            if (place[i+1, j + 1] != "-1")
+                                ss += int.Parse(place[i + 1, j + 1]);
+                        }
+                        catch (IndexOutOfRangeException)
+                        {
+
+                        };
+                        try
+                        {
+                            if (place[i+1 ,j - 1] != "-1")
+                                ss += int.Parse(place[i + 1, j - 1]);
+                        }
+                        catch (IndexOutOfRangeException)
+                        {
+
+                        };
+                        try
+                        {
+                            if (place[i-1, j - 1] != "-1")
+                                ss += int.Parse(place[i - 1, j - 1]);
+                        }
+                        catch (IndexOutOfRangeException)
+                        {
+
+                        };
+                        try
+                        {
+                            if (place[i-1, j + 1] != "-1")
+                                ss += int.Parse(place[i - 1, j + 1]);
                         }
                         catch (IndexOutOfRangeException)
                         {
@@ -105,7 +145,7 @@ namespace _4thexc
                         if (ss == 2)
                             newPlace[i, j] = "1";
                         else
-                            newPlace[i, j] = "0";
+                            newPlace[i, j] = "-1";
                     }
                 }
             }
