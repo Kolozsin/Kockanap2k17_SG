@@ -25,6 +25,7 @@ namespace kockanap
             // Note: The GetContext method blocks while waiting for a request. 
             HttpListenerContext context = listener.GetContext();
             HttpListenerRequest request = context.Request;
+            
             // Obtain a response object.
             HttpListenerResponse response = context.Response;
             // Construct a response.
@@ -38,6 +39,7 @@ namespace kockanap
             output.Close();
             listener.Stop();
         }
+
 
 
 

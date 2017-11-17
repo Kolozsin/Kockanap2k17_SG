@@ -8,13 +8,12 @@ namespace kockanap
 {
     public class Blokk
     {
-        List<Merkozes> merkozesek;
-        List<Eredmenyek> eredmeny;
+       public List<Merkozes> merkozesek = new List<Merkozes>();
+        List<Eredmenyek> eredmeny = new List<Eredmenyek>();
 
         public void CsomagDarabolas(string input)
         {
-            merkozesek = new List<Merkozes>();
-            eredmeny = new List<Eredmenyek>();
+           
             string[] elsoSplit = input.Split('?'); 
             List<string> merkozesekList = new List<string>();
             for (int i = 0; i < elsoSplit.Length; i++)

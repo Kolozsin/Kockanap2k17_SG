@@ -29,7 +29,7 @@ namespace _3_feladat
             output = newinput;
             if (output.Length>=max)
             {
-                Console.WriteLine(output.Substring(min-1,max-min));
+                Console.WriteLine(output.Substring(min-1,max-min+1));
             }
             else
             {
@@ -38,7 +38,7 @@ namespace _3_feladat
                 {
                     output += "-";
                 }
-                Console.WriteLine(output.Substring(min-1, max-min));
+                Console.WriteLine(output.Substring(min-1, max-min+1));
             }
         }
 

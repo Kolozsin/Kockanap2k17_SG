@@ -10,6 +10,7 @@ namespace kockanap
 {
     public class UDPServer
     {
+        
         public void Listen()
         {
             UdpClient listener = new UdpClient(1940);
@@ -42,6 +43,7 @@ namespace kockanap
     }
     public class  HandleDataClass
     {
+        static Blokk cucc = new Blokk();
         public void SubscribeToEvent(UDPServer server)
         {
             server.DataReceivedEvent += server_DataReceivedEvent;
@@ -53,7 +55,7 @@ namespace kockanap
             //Console.WriteLine("Received message from [{0}:{1}]:\r\n{2}",
             //    args.IpAddress.ToString(), args.Port.ToString(),
             //    Encoding.ASCII.GetString(args.ReceivedBytes));
-            Blokk cucc = new Blokk();
+          
             cucc.CsomagDarabolas(Encoding.ASCII.GetString(args.ReceivedBytes));
             Console.WriteLine("Received message from [{0}:{1}]:\r\n{2}",
                args.IpAddress.ToString(), args.Port.ToString(),
