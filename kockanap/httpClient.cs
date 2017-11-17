@@ -12,7 +12,7 @@ namespace kockanap
     {
         public static void SimpleListenerExample()
         {
-            string prefixes = "http://192.168.1.16:1945/simpleg/";
+            string prefixes = "http://192.168.1.15:1945/simpleg/";
             if (prefixes == null || prefixes.Length == 0)
                 throw new ArgumentException("prefixes");
 

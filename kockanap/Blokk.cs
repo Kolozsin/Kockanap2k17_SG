@@ -74,10 +74,7 @@ namespace kockanap
             Player2p = player2p;
         }
 
-        public string Player1g1 { get => Player1g; set => Player1g = value; }
-        public string Player1p1 { get => Player1p; set => Player1p = value; }
-        public string Player2g1 { get => Player2g; set => Player2g = value; }
-        public string Player2p1 { get => Player2p; set => Player2p = value; }
+
 
         internal void Update(string v2, string v3, string v4, string v5)
         {
@@ -124,20 +121,187 @@ namespace kockanap
             this.Player23Y = player23Y;
         }
 
-        public string LabdaX { get => labdaX; set => labdaX = value; }
-        public string LabdaY { get => labdaY; set => labdaY = value; }
-        public string Player11X { get => player11X; set => player11X = value; }
-        public string Player11Y { get => player11Y; set => player11Y = value; }
-        public string Player12X { get => player12X; set => player12X = value; }
-        public string Player12Y { get => player12Y; set => player12Y = value; }
-        public string Player13X { get => player13X; set => player13X = value; }
-        public string Player13Y { get => player13Y; set => player13Y = value; }
-        public string Player21X { get => player21X; set => player21X = value; }
-        public string Player21Y { get => player21Y; set => player21Y = value; }
-        public string Player22X { get => player22X; set => player22X = value; }
-        public string Player22Y { get => player22Y; set => player22Y = value; }
-        public string Player23X { get => player23X; set => player23X = value; }
-        public string Player23Y { get => player23Y; set => player23Y = value; }
+        public string LabdaX
+        {
+            get
+            {
+                return labdaX;
+            }
+
+            set
+            {
+                labdaX = value;
+            }
+        }
+
+        public string LabdaY
+        {
+            get
+            {
+                return labdaY;
+            }
+
+            set
+            {
+                labdaY = value;
+            }
+        }
+
+        public string Player11X
+        {
+            get
+            {
+                return player11X;
+            }
+
+            set
+            {
+                player11X = value;
+            }
+        }
+
+        public string Player11Y
+        {
+            get
+            {
+                return player11Y;
+            }
+
+            set
+            {
+                player11Y = value;
+            }
+        }
+
+        public string Player12X
+        {
+            get
+            {
+                return player12X;
+            }
+
+            set
+            {
+                player12X = value;
+            }
+        }
+
+        public string Player12Y
+        {
+            get
+            {
+                return player12Y;
+            }
+
+            set
+            {
+                player12Y = value;
+            }
+        }
+
+        public string Player13X
+        {
+            get
+            {
+                return player13X;
+            }
+
+            set
+            {
+                player13X = value;
+            }
+        }
+
+        public string Player13Y
+        {
+            get
+            {
+                return player13Y;
+            }
+
+            set
+            {
+                player13Y = value;
+            }
+        }
+
+        public string Player21X
+        {
+            get
+            {
+                return player21X;
+            }
+
+            set
+            {
+                player21X = value;
+            }
+        }
+
+        public string Player21Y
+        {
+            get
+            {
+                return player21Y;
+            }
+
+            set
+            {
+                player21Y = value;
+            }
+        }
+
+        public string Player22X
+        {
+            get
+            {
+                return player22X;
+            }
+
+            set
+            {
+                player22X = value;
+            }
+        }
+
+        public string Player22Y
+        {
+            get
+            {
+                return player22Y;
+            }
+
+            set
+            {
+                player22Y = value;
+            }
+        }
+
+        public string Player23X
+        {
+            get
+            {
+                return player23X;
+            }
+
+            set
+            {
+                player23X = value;
+            }
+        }
+
+        public string Player23Y
+        {
+            get
+            {
+                return player23Y;
+            }
+
+            set
+            {
+                player23Y = value;
+            }
+        }
 
         internal void Update(string v1, string v2, string v3, string v4, string v5, string v6, string v7, string v8, string v9, string v10, string v11, string v12, string v13, string v14)
         {
