@@ -13,7 +13,7 @@ namespace kockanap
         public void Listen()
         {
             UdpClient listener = new UdpClient(1940);
-            IPEndPoint serverEP = new IPEndPoint(IPAddress.Parse("192.168.1.15"), 1940); // 123 módosítani
+            IPEndPoint serverEP = new IPEndPoint(IPAddress.Parse("192.168.1.16"), 1940); // 123 módosítani
             while (true)
             {
                 byte[] data = listener.Receive(ref serverEP);

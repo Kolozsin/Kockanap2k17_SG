@@ -23,7 +23,8 @@ namespace kockanap
             Thread dataHandlerThread = new Thread(() =>
             hdc.SubscribeToEvent(server));
             dataHandlerThread.Start();
-
+            Thread http = new Thread(()=> httpCliens.SimpleListenerExample());
+            http.Start();
             while(true)
             {
                 Thread.Sleep(100);
