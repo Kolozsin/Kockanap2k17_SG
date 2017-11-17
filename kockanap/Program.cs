@@ -12,6 +12,7 @@ namespace kockanap
         static void Main(string[] args)
         {
             // simple geometry
+
             UDPServer server = new UDPServer();
             HandleDataClass hdc = new HandleDataClass();
 
