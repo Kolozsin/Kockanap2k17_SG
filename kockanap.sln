@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.26730.16
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "kockanap", "kockanap\kockanap.csproj", "{4751BDD2-9588-41C1-BA96-E904393FF312}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "3_feladat", "3_feladat\3_feladat.csproj", "{57C1EF51-D8D6-4A6A-A9B7-507A34091555}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{4751BDD2-9588-41C1-BA96-E904393FF312}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4751BDD2-9588-41C1-BA96-E904393FF312}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4751BDD2-9588-41C1-BA96-E904393FF312}.Release|Any CPU.Build.0 = Release|Any CPU
+		{57C1EF51-D8D6-4A6A-A9B7-507A34091555}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{57C1EF51-D8D6-4A6A-A9B7-507A34091555}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{57C1EF51-D8D6-4A6A-A9B7-507A34091555}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{57C1EF51-D8D6-4A6A-A9B7-507A34091555}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
