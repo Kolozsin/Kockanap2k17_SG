@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace _4thexc
 {
+
     class Program
     {
+        
         static void Main(string[] args)
         {
             int N, H, W;
@@ -23,7 +25,7 @@ namespace _4thexc
             for (int i = 0; i < H; i++)
             {
                 s2[i] = Console.ReadLine();
-                s1 = s2[i].Split(';');
+                s1 = s2[i].Split(';');  
                 for (int j = 0; j < W; j++)
                 {
                     Place[i, j] = s1[j];
@@ -39,16 +41,13 @@ namespace _4thexc
             {
                 for (int j = 0; j < W; j++)
                 {
-                    Console.Write(Place[i, j] + " ");
+                    if(Place[i,j] == "-1")
+                        Console.Write(" ");
+                    else
+                        Console.Write(Place[i, j]);
                 }
                 Console.WriteLine();
             }
-
-
-
-
-
-
         }
 
         private static string[,] Turn(string[,] place)
