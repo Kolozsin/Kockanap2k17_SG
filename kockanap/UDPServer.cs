@@ -56,7 +56,7 @@ namespace kockanap
             int xyz = 0;
             for (int i = 0; i < cucc2.Length; i++)
             {
-                if (cucc2[i].Contains("555555"))
+                if (cucc2[i].Contains("59998"))
                 {
                     cucc3[xyz] = cucc2[i];
                     xyz++;

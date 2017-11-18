@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -130,7 +132,10 @@ namespace kockanap
 
             set
             {
+                
                 labdaX = value;
+                OPC();
+
             }
         }
 
@@ -144,6 +149,7 @@ namespace kockanap
             set
             {
                 labdaY = value;
+                OPC();
             }
         }
 
@@ -303,6 +309,13 @@ namespace kockanap
             }
         }
 
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        void OPC([CallerMemberName]string n = "")
+        {
+            if (PropertyChanged != null)
+                PropertyChanged(this, new PropertyChangedEventArgs(n));
+        }
         internal void Update(string v1, string v2, string v3, string v4, string v5, string v6, string v7, string v8, string v9, string v10, string v11, string v12, string v13, string v14)
         {
             this.LabdaX = v1;
@@ -320,213 +333,264 @@ namespace kockanap
             this.Player23X = v13;
             this.Player23Y = v14;
         }
-
+        
         public string Move(string player)
         {
-            string coords = "";
-            switch (player)
+            string vissza = "";
+            AI ai = new AI(int.Parse(player));
+            double[] aktual = new double[4];
+            double[] aktual2 = new double[4];
+            double[] aktual3 = new double[4];
+            double[] aktual4 = new double[4];
+            double[] aktual5 = new double[4];
+            double[] aktual6 = new double[4];
+
+            aktual[0] = double.Parse(Player11X);
+            aktual[1] = double.Parse(player11Y);
+
+            aktual2[0] = double.Parse(Player12X);
+            aktual2[1] = double.Parse(player12Y);
+
+            aktual3[0] = double.Parse(Player13X);
+            aktual3[1] = double.Parse(player13Y);
+
+            aktual4[0] = double.Parse(Player21X);
+            aktual4[1] = double.Parse(player21Y);
+
+            aktual5[0] = double.Parse(Player22X);
+            aktual5[1] = double.Parse(player22Y);
+
+            aktual6[0] = double.Parse(Player23X);
+            aktual6[1] = double.Parse(player23Y);
+
+
+            List<double[]> unitok = new List<double[]>();
+            unitok.Add(aktual);
+            unitok.Add(aktual2);
+            unitok.Add(aktual3);
+            unitok.Add(aktual4);
+            unitok.Add(aktual5);
+            unitok.Add(aktual6);
+            for (int i = 0; i < unitok.Count; i++)
             {
-                case "1":  coords =  Move1(Player11X,Player11Y,1) + "\n" + Move2(Player12X,Player12Y,1) + "\n" + Move3(Player13X,Player13Y,1) + "\n"; break;
-                case "2":  coords = Move1(Player21X, Player21Y,2) + "\n" + Move2(Player22X, Player22Y,2) + "\n" + Move3(Player23X, Player23Y,2) + "\n"; break;
-                default:
-                    break;
+                unitok.ElementAt(i)[2] = double.Parse(LabdaX);
+                unitok.ElementAt(i)[3] = double.Parse(LabdaY);
             }
-
-
-            return coords;
+            int plusz = 0;
+            if (player == "2")
+                plusz = 3;
+            for (int i = 0; i < 3; i++)
+            {
+                vissza = ai.Mozgat(unitok.ElementAt(i + plusz));
+            }
+            return vissza;
         }
+        //public string Move(string player)
+        //{
+        //    string coords = "";
+        //    switch (player)
+        //    {
+        //        case "1":  coords =  Move1(Player11X,Player11Y,1) + "\n" + Move2(Player12X,Player12Y,1) + "\n" + Move3(Player13X,Player13Y,1) + "\n"; break;
+        //        case "2":  coords = Move1(Player21X, Player21Y,2) + "\n" + Move2(Player22X, Player22Y,2) + "\n" + Move3(Player23X, Player23Y,2) + "\n"; break;
+        //        default:
+        //            break;
+        //    }
 
-        private string Move3(string playerX, string playerY,int player)
-        {
+
+        //    return coords;
+        //}
+
+        //private string Move3(string playerX, string playerY,int player)
+        //{
          
-               double x = (double.Parse(labdaX) - double.Parse(playerX));
-               double y = (double.Parse(labdaY) - double.Parse(playerY));
-            if (x > y && player == 1)
-            {
-                if (double.Parse(labdaX) < x)
-                {
-                    x = -4;
-                    y = 0;
-                }
-                else
-                {
-                    x = 4;
-                    y = y / x * 4;
-                }
+        //       double x = (double.Parse(labdaX) - double.Parse(playerX));
+        //       double y = (double.Parse(labdaY) - double.Parse(playerY));
+        //    if (x > y && player == 1)
+        //    {
+        //        if (double.Parse(labdaX) < x)
+        //        {
+        //            x = -4;
+        //            y = 0;
+        //        }
+        //        else
+        //        {
+        //            x = 4;
+        //            y = y / x * 4;
+        //        }
 
-            }
-            else if (x > y && player == 2)
-            {
-                if (double.Parse(labdaX) < x)
-                {
-                    x = 4;
-                    y = 0;
-                }
-                else
-                {
-                    x = -4;
-                    y = y / x * 4;
-                }
-            }
-            else if (x < y && player == 1)
-            {
-                if (double.Parse(labdaX) < x)
-                {
-                    x = -4;
-                    y = 0;
-                }
-                else
-                {
-                    y = 4;
-                    x = x / y * 4;
-                }
-            }
-            else if (x < y && player == 2)
-            {
-                if (double.Parse(labdaX) < x)
-                {
-                    x = 4;
-                    y = 0;
-                }
-                else
-                {
-                    y = 4;
-                    x = x / y * -4;
+        //    }
+        //    else if (x > y && player == 2)
+        //    {
+        //        if (double.Parse(labdaX) < x)
+        //        {
+        //            x = 4;
+        //            y = 0;
+        //        }
+        //        else
+        //        {
+        //            x = -4;
+        //            y = y / x * 4;
+        //        }
+        //    }
+        //    else if (x < y && player == 1)
+        //    {
+        //        if (double.Parse(labdaX) < x)
+        //        {
+        //            x = -4;
+        //            y = 0;
+        //        }
+        //        else
+        //        {
+        //            y = 4;
+        //            x = x / y * 4;
+        //        }
+        //    }
+        //    else if (x < y && player == 2)
+        //    {
+        //        if (double.Parse(labdaX) < x)
+        //        {
+        //            x = 4;
+        //            y = 0;
+        //        }
+        //        else
+        //        {
+        //            y = 4;
+        //            x = x / y * -4;
 
-                }
+        //        }
 
-            }
-            string nx = (x).ToString();
-            string ny = (y).ToString();
-            return nx + "\n" + ny;
-        }
+        //    }
+        //    string nx = (x).ToString();
+        //    string ny = (y).ToString();
+        //    return nx + "\n" + ny;
+        //}
 
-        private string Move2(string playerX, string playerY,int player)
-        {
-            double x = (double.Parse(labdaX) - double.Parse(playerX));
-            double y = (double.Parse(labdaY) - double.Parse(playerY));
-            if (x > y && player == 1)
-            {
-                if (double.Parse(labdaX) < x)
-                {
-                    x = -4;
-                    y = 0;
-                }
-                else
-                {
-                    x = 4;
-                    y = y / x * 4;
-                }
+        //private string Move2(string playerX, string playerY,int player)
+        //{
+        //    double x = (double.Parse(labdaX) - double.Parse(playerX));
+        //    double y = (double.Parse(labdaY) - double.Parse(playerY));
+        //    if (x > y && player == 1)
+        //    {
+        //        if (double.Parse(labdaX) < x)
+        //        {
+        //            x = -4;
+        //            y = 0;
+        //        }
+        //        else
+        //        {
+        //            x = 4;
+        //            y = y / x * 4;
+        //        }
 
-            }
-            else if (x > y && player == 2)
-            {
-                if (double.Parse(labdaX) < x)
-                {
-                    x = 4;
-                    y = 0;
-                }
-                else
-                {
-                    x = -4;
-                    y = y / x * 4;
-                }
-            }
-            else if (x < y && player == 1)
-            {
-                if (double.Parse(labdaX) < x)
-                {
-                    x = -4;
-                    y = 0;
-                }
-                else
-                {
-                    y = 4;
-                    x = x / y * 4;
-                }
-            }
-            else if (x < y && player == 2)
-            {
-                if (double.Parse(labdaX) < x)
-                {
-                    x = 4;
-                    y = 0;
-                }
-                else
-                {
-                    y = 4;
-                    x = x / y * -4;
+        //    }
+        //    else if (x > y && player == 2)
+        //    {
+        //        if (double.Parse(labdaX) < x)
+        //        {
+        //            x = 4;
+        //            y = 0;
+        //        }
+        //        else
+        //        {
+        //            x = -4;
+        //            y = y / x * 4;
+        //        }
+        //    }
+        //    else if (x < y && player == 1)
+        //    {
+        //        if (double.Parse(labdaX) < x)
+        //        {
+        //            x = -4;
+        //            y = 0;
+        //        }
+        //        else
+        //        {
+        //            y = 4;
+        //            x = x / y * 4;
+        //        }
+        //    }
+        //    else if (x < y && player == 2)
+        //    {
+        //        if (double.Parse(labdaX) < x)
+        //        {
+        //            x = 4;
+        //            y = 0;
+        //        }
+        //        else
+        //        {
+        //            y = 4;
+        //            x = x / y * -4;
 
-                }
+        //        }
 
-            }
-            string nx = (x).ToString();
-            string ny = (y).ToString();
-            return nx + "\n" + ny;
-        }
+        //    }
+        //    string nx = (x).ToString();
+        //    string ny = (y).ToString();
+        //    return nx + "\n" + ny;
+        //}
 
-        private string Move1(string playerX, string playerY,int player)
-        {
-            double x = (double.Parse(labdaX) - double.Parse(playerX));
-            double y = (double.Parse(labdaY) - double.Parse(playerY));
-            if (x > y && player == 1)
-            {
-                if (double.Parse(labdaX)<x)
-                {
-                    x = -4;
-                    y = 0;
-                }
-                else
-                {
-                x = 4;
-                y = y / x * 4;
-                }
+        //private string Move1(string playerX, string playerY,int player)
+        //{
+        //    double x = (double.Parse(labdaX) - double.Parse(playerX));
+        //    double y = (double.Parse(labdaY) - double.Parse(playerY));
+        //    if (x > y && player == 1)
+        //    {
+        //        if (double.Parse(labdaX)<x)
+        //        {
+        //            x = -4;
+        //            y = 0;
+        //        }
+        //        else
+        //        {
+        //        x = 4;
+        //        y = y / x * 4;
+        //        }
 
-            }
-            else if (x > y && player == 2)
-            {
-                if (double.Parse(labdaX) < x)
-                {
-                    x = 4;
-                    y = 0;
-                }
-                else
-                {
-                    x = -4;
-                    y = y / x * 4;
-                }
-            }
-            else if(x < y && player == 1)
-            {
-                if (double.Parse(labdaX) < x)
-                {
-                    x = -4;
-                    y = 0;
-                }
-                else
-                {
-                    y = 4;
-                    x = x / y * 4;
-                }
-            }
-            else if (x < y && player == 2)
-            {
-                if (double.Parse(labdaX) < x)
-                {
-                    x = 4;
-                    y = 0;
-                }
-                else
-	            {
-                    y = 4;
-                    x = x / y * -4;
+        //    }
+        //    else if (x > y && player == 2)
+        //    {
+        //        if (double.Parse(labdaX) < x)
+        //        {
+        //            x = 4;
+        //            y = 0;
+        //        }
+        //        else
+        //        {
+        //            x = -4;
+        //            y = y / x * 4;
+        //        }
+        //    }
+        //    else if(x < y && player == 1)
+        //    {
+        //        if (double.Parse(labdaX) < x)
+        //        {
+        //            x = -4;
+        //            y = 0;
+        //        }
+        //        else
+        //        {
+        //            y = 4;
+        //            x = x / y * 4;
+        //        }
+        //    }
+        //    else if (x < y && player == 2)
+        //    {
+        //        if (double.Parse(labdaX) < x)
+        //        {
+        //            x = 4;
+        //            y = 0;
+        //        }
+        //        else
+	       //     {
+        //            y = 4;
+        //            x = x / y * -4;
 
-                }
+        //        }
  
-            }
-            string nx = (x).ToString();
-            string ny = (y).ToString();
-            return nx + "\n" + ny;
-        }
+        //    }
+        //    string nx = (x).ToString();
+        //    string ny = (y).ToString();
+        //    return nx + "\n" + ny;
+        //}
     }
 }

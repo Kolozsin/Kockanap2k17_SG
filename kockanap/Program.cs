@@ -9,6 +9,8 @@ namespace kockanap
 {
     class Program
     {
+        public static object Window { get; private set; }
+
         static void Main(string[] args)
         {
             // simple geometry
@@ -23,9 +25,10 @@ namespace kockanap
             Thread dataHandlerThread = new Thread(() =>
             hdc.SubscribeToEvent(server));
             dataHandlerThread.Start();
-            Thread http = new Thread(()=> httpCliens.SimpleListenerExample());
+            Thread http = new Thread(() => httpCliens.SimpleListenerExample());
             http.Start();
-            while(true)
+
+            while (true)
             {
                 Thread.Sleep(100);
             }
