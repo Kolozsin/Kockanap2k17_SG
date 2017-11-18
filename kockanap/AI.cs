@@ -79,7 +79,7 @@ namespace kockanap
         private double[] VedekezzGeco(double[] ertekek)
         {
             double[] vissza = new double[2];
-            int valamennyi = 35;
+            int valamennyi = 46;
             if (ertekek[3]>kapuKozep)//lentről kerülöm
             {
                 ertekek[3] -= valamennyi;
@@ -101,27 +101,27 @@ namespace kockanap
             double xHova = ertekek[2] - ertekek[0];
             int szorzo = 1;
             double yHova = ertekek[3] - ertekek[1];
-            if (Math.Abs(xHova)>Math.Abs(yHova))
+            if (Math.Abs(xHova) > Math.Abs(yHova))
             {
                 if (xHova < 0)
                     szorzo = -1;
-                if(yHova != 0)
-                    yHova = (yHova / xHova) * 4;
-                xHova = 4*szorzo;
+                if (yHova != 0)
+                    yHova = (yHova / xHova) * 4 * szorzo;
+                xHova = 4 * szorzo;
             }
             else
             {
                 if (yHova < 0)
                     szorzo = -1;
-                if(xHova!=0)
-                    xHova = (xHova / yHova) * 4;
-                yHova = 4*szorzo;
+                if (xHova != 0)
+                    xHova = (xHova / yHova) * 4 * szorzo;
+                yHova = 4 * szorzo;
             }
             vissza[0] = xHova;
             vissza[1] = yHova;
             return vissza;
         }
 
-       
+
     }
 }
