@@ -24,30 +24,31 @@ namespace kockanap
 
 
         public string Mozgat(double[] ertekek)// 4 elemű játékos koord majd labda koord
-                                                //unit X-Y labda X-Y
+                                                //01unit X-Y 23labda X-Y
         {
             string visz = "";
             double[] vissza = new double[2];
-            if (player==1)//jobbra támad
+            if (player==1)//jobbra
             {
-                if (ertekek[2]<ertekek[0]) 
+                if (ertekek[2]>ertekek[0]) 
                 {
-                    vissza = VedekezzGeco(ertekek);
+                    vissza = TamadjGeco(ertekek);
                 }
                 else
                 {
-                    vissza = TamadjGeco(ertekek);
+                    vissza = VedekezzGeco(ertekek);
                 }
             }
             else if (player == 2)//balra támad
             {
-                if (ertekek[2] > ertekek[0])
+                if (ertekek[2] < ertekek[0])
                 {
-                    vissza = VedekezzGeco(ertekek);
+                    vissza = TamadjGeco(ertekek);
                 }
                 else
                 {
-                    vissza = TamadjGeco(ertekek);
+
+                    vissza = VedekezzGeco(ertekek);
                 }
             }
             for (int i = 0; i < vissza.Length; i++)
@@ -59,73 +60,68 @@ namespace kockanap
 
         private double[] TamadjGeco(double[] ertekek)
         {
-            if(Math.Abs(ertekek[3]-ertekek[1])>300 || Math.Abs(ertekek[2] - ertekek[0]) > 300)
-                return TamadoVektor(ertekek);
-            else
+            if(!(Math.Abs(ertekek[3]-ertekek[1])>300 || Math.Abs(ertekek[2] - ertekek[0]) > 300))
             {
+                int valamennyi = 16;
                 //Norbi felelősséget vállal
-                if (ertekek[3]>palyaKozep)
+                if (ertekek[3]>kapuKozep)
                 {
-                    ertekek[3] += 25;
+                    ertekek[3] += valamennyi;
                 }
                 else
                 {
-                    ertekek[3] -= 25;
+                    ertekek[3] -= valamennyi;
                 }
             }
-            return TamadoVektor(ertekek);
+            return VektorSzamit(ertekek);
         }
 
         private double[] VedekezzGeco(double[] ertekek)
         {
             double[] vissza = new double[2];
-
-            if (ertekek[2]>kapuKozep)//lentről kerülöm
+            int valamennyi = 35;
+            if (ertekek[3]>kapuKozep)//lentről kerülöm
             {
-                ertekek[2] -= 65;
+                ertekek[3] -= valamennyi;
                 
             }
             else
             {
-                ertekek[2] += 65;
+                ertekek[3] += valamennyi;
 
             }
-            vissza = TamadoVektor(ertekek);
+            vissza = VektorSzamit(ertekek);
             return vissza;
         }
 
-        private double[] TamadoVektor(double[] ertekek) // neki megy a labda helyzetének
+        private double[] VektorSzamit(double[] ertekek) // neki megy a labda helyzetének
         {
             double[] vissza = new double[2];
 
             double xHova = ertekek[2] - ertekek[0];
             int szorzo = 1;
             double yHova = ertekek[3] - ertekek[1];
-            if (xHova>yHova)
+            if (Math.Abs(xHova)>Math.Abs(yHova))
             {
                 if (xHova < 0)
                     szorzo = -1;
-                yHova = (yHova / xHova) * 4;
+                if(yHova != 0)
+                    yHova = (yHova / xHova) * 4;
                 xHova = 4*szorzo;
             }
             else
             {
                 if (yHova < 0)
                     szorzo = -1;
-                xHova = (xHova / yHova) * 4;
-                yHova = 4;
+                if(xHova!=0)
+                    xHova = (xHova / yHova) * 4;
+                yHova = 4*szorzo;
             }
             vissza[0] = xHova;
             vissza[1] = yHova;
             return vissza;
         }
 
-        private double[] LabdaraMegy(double unitX, double unitY,  double ballX, double ballY)
-        {
-            double[] vissza = new double[2];
-            double xKoor = ballX - unitX;
-            double yKoor = ballY - unitY;
-            return vissza;
-        }
+       
     }
 }

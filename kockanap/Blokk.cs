@@ -381,7 +381,7 @@ namespace kockanap
                 plusz = 3;
             for (int i = 0; i < 3; i++)
             {
-                vissza = ai.Mozgat(unitok.ElementAt(i + plusz));
+                vissza += ai.Mozgat(unitok.ElementAt(i + plusz));
             }
             return vissza;
         }
