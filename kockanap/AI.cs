@@ -38,12 +38,9 @@ namespace kockanap
                 }
                 else
                 {
-                    if (ertekek[2] < 400 && kapus)
-                    {
-                        VedekezzKapus(ertekek);
-                    }
+                    
 
-                    vissza = VedekezzGeco(ertekek);
+                    vissza = TamadjGeco(ertekek);
                 }
             }
             else if (player == 2)//balra támad
@@ -54,12 +51,7 @@ namespace kockanap
                 }
                 else
                 {
-
-                    if (ertekek[2] < 400 && kapus)
-                    {
-                        VedekezzKapus(ertekek);
-                    }
-                    vissza = VedekezzGeco(ertekek);
+                    vissza = TamadjGeco(ertekek);
                 }
             }
             for (int i = 0; i < vissza.Length; i++)
