@@ -9,13 +9,14 @@ namespace kockanap
    
     public class AI
     {
-        
+        bool kapus;
         int player;
         public AI(int player)
         {
             this.player = player;//1 vagy 2
             
         }
+
         const int kapuKozep = 350;
         const double kapuSzel = 175 / 2;
         const double felsoKapufa = kapuKozep - kapuSzel;
@@ -23,9 +24,10 @@ namespace kockanap
         const int palyaKozep = 500;
 
 
-        public string Mozgat(double[] ertekek)// 4 elemű játékos koord majd labda koord
+        public string Mozgat(double[] ertekek,bool kapus)// 4 elemű játékos koord majd labda koord
                                                 //01unit X-Y 23labda X-Y
         {
+            bool keeper = kapus;
             string visz = "";
             double[] vissza = new double[2];
             if (player==1)//jobbra
@@ -36,6 +38,11 @@ namespace kockanap
                 }
                 else
                 {
+                    if (ertekek[2]<400 && kapus)
+                    {
+                        VedekezzKapus(ertekek);
+                    }
+
                     vissza = VedekezzGeco(ertekek);
                 }
             }
@@ -48,6 +55,10 @@ namespace kockanap
                 else
                 {
 
+                    if (ertekek[2] < 400 && kapus)
+                    {
+                        VedekezzKapus(ertekek);
+                    }
                     vissza = VedekezzGeco(ertekek);
                 }
             }
@@ -56,6 +67,20 @@ namespace kockanap
                 visz += vissza[i]+"\n";
             }
             return visz;
+        }
+
+        private void VedekezzKapus(double[] ertekek)
+        {
+            if (player == 1)
+            {
+                double[] ujertekek = new double[] { ertekek[0], ertekek[1], 0, 350 };
+                VektorSzamit(ujertekek);
+            }
+            else
+            {
+                double[] ujertekek = new double[] { ertekek[0], ertekek[1], 1000, 350 };
+                VektorSzamit(ujertekek);
+            }
         }
 
         private double[] TamadjGeco(double[] ertekek)
