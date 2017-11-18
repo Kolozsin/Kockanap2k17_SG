@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "kockanap", "kockanap\kockan
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "3_feladat", "3_feladat\3_feladat.csproj", "{57C1EF51-D8D6-4A6A-A9B7-507A34091555}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1_feladat", "1_feladat\1_feladat.csproj", "{C336C107-77E4-498B-BDDA-9DAE31DD63B0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfApp1", "WpfApp1\WpfApp1.csproj", "{02655F07-7826-4A4B-A8B1-3AF1E921DE60}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{57C1EF51-D8D6-4A6A-A9B7-507A34091555}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{57C1EF51-D8D6-4A6A-A9B7-507A34091555}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{57C1EF51-D8D6-4A6A-A9B7-507A34091555}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C336C107-77E4-498B-BDDA-9DAE31DD63B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C336C107-77E4-498B-BDDA-9DAE31DD63B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C336C107-77E4-498B-BDDA-9DAE31DD63B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C336C107-77E4-498B-BDDA-9DAE31DD63B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{02655F07-7826-4A4B-A8B1-3AF1E921DE60}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02655F07-7826-4A4B-A8B1-3AF1E921DE60}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02655F07-7826-4A4B-A8B1-3AF1E921DE60}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02655F07-7826-4A4B-A8B1-3AF1E921DE60}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
