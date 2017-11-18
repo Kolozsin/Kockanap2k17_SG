@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace kockanap
 {
-   
+
     public class AI
     {
         bool kapus;
@@ -14,7 +14,7 @@ namespace kockanap
         public AI(int player)
         {
             this.player = player;//1 vagy 2
-            
+
         }
 
         const int kapuKozep = 350;
@@ -24,21 +24,21 @@ namespace kockanap
         const int palyaKozep = 500;
 
 
-        public string Mozgat(double[] ertekek,bool kapus)// 4 elemű játékos koord majd labda koord
-                                                //01unit X-Y 23labda X-Y
+        public string Mozgat(double[] ertekek, bool kapus)// 4 elemű játékos koord majd labda koord
+                                                          //01unit X-Y 23labda X-Y
         {
             bool keeper = kapus;
             string visz = "";
             double[] vissza = new double[2];
-            if (player==1)//jobbra
+            if (player == 1)//jobbra
             {
-                if (ertekek[2]>ertekek[0]) 
+                if (ertekek[2] > ertekek[0])
                 {
                     vissza = TamadjGeco(ertekek);
                 }
                 else
                 {
-                    if (ertekek[2]<400 && kapus)
+                    if (ertekek[2] < 400 && kapus)
                     {
                         VedekezzKapus(ertekek);
                     }
@@ -64,7 +64,7 @@ namespace kockanap
             }
             for (int i = 0; i < vissza.Length; i++)
             {
-                visz += vissza[i]+"\n";
+                visz += vissza[i] + "\n";
             }
             return visz;
         }
@@ -85,11 +85,11 @@ namespace kockanap
 
         private double[] TamadjGeco(double[] ertekek)
         {
-            if(!(Math.Abs(ertekek[3]-ertekek[1])>300 || Math.Abs(ertekek[2] - ertekek[0]) > 300))
+            if (!(Math.Abs(ertekek[3] - ertekek[1]) > 300 || Math.Abs(ertekek[2] - ertekek[0]) > 300))
             {
                 int valamennyi = 16;
                 //Norbi felelősséget vállal
-                if (ertekek[3]>kapuKozep)
+                if (ertekek[3] > kapuKozep)
                 {
                     ertekek[3] += valamennyi;
                 }
@@ -105,10 +105,10 @@ namespace kockanap
         {
             double[] vissza = new double[2];
             int valamennyi = 46;
-            if (ertekek[3]>kapuKozep)//lentről kerülöm
+            if (ertekek[3] > kapuKozep)//lentről kerülöm
             {
                 ertekek[3] -= valamennyi;
-                
+
             }
             else
             {
