@@ -320,5 +320,47 @@ namespace kockanap
             this.Player23X = v13;
             this.Player23Y = v14;
         }
+
+        public string Move(string player)
+        {
+            string coords = "";
+            switch (player)
+            {
+                case "1":  coords =  Move1(Player11X,Player11Y) + "\n" + Move2(Player12X,Player12Y) + "\n" + Move3(Player13X,Player13Y) + "\n"; break;
+                case "2":  coords = Move1(Player21X, Player21Y) + "\n" + Move2(Player22X, Player22Y) + "\n" + Move3(Player23X, Player23Y) + "\n"; break;
+                default:
+                    break;
+            }
+
+
+            return coords;
+        }
+
+        private string Move3(string playerX, string playerY)
+        {
+            double x = (double.Parse(labdaX) - double.Parse(playerX));
+            double y = (double.Parse(labdaY) - double.Parse(playerY));
+            string nx = ((x + 200) / 400 * 4).ToString();
+            string ny = ((y + 200) / 400 * 4).ToString();
+            return nx + "\n" + ny;
+        }
+
+        private string Move2(string playerX, string playerY)
+        {
+            double x = (double.Parse(labdaX) - double.Parse(playerX));
+            double y = (double.Parse(labdaY) - double.Parse(playerY));
+            string nx = ((x + 200) / 400 * 4).ToString();
+            string ny = ((y + 200) / 400 * 4).ToString();
+            return nx + "\n" + ny;
+        }
+
+        private string Move1(string playerX, string playerY)
+        {
+            double x = (double.Parse(labdaX) - double.Parse(playerX));
+            double y = (double.Parse(labdaY) - double.Parse(playerY));
+            string nx = ((x + 200) / 400 * 4).ToString();
+            string ny = ((y + 200) / 400 * 4).ToString();
+            return nx + "\n" + ny;
+        }
     }
 }

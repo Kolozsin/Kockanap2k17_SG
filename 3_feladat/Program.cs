@@ -12,19 +12,27 @@ namespace _3_feladat
         {
             string insertString = Console.ReadLine();
             string program = Console.ReadLine();
-            int repeat = int.Parse(Console.ReadLine());
+            long repeat = int.Parse(Console.ReadLine());
             int min = int.Parse(Console.ReadLine());
             int max = int.Parse(Console.ReadLine());
             Exec(insertString,program,repeat,min,max);
         }
 
-        private static void Exec(string insertString,string program,int repeat,int min,int max)
+        private static void Exec(string insertString,string program,long repeat,int min,int max)
         {
             string output = "";
             string newinput = insertString;
             for (int i = 0; i < repeat; i++)
             {
-                newinput = ReplaceParameter(newinput, program);
+                
+                if(newinput.Length>max*2)
+                {
+                    break;
+                }
+                else
+                {
+                    newinput = ReplaceParameter(newinput, program);
+                }
             }
             output = newinput;
             if (output.Length>=max)

@@ -43,7 +43,7 @@ namespace kockanap
     }
     public class  HandleDataClass
     {
-        static Blokk cucc = new Blokk();
+        public static Blokk cucc = new Blokk();
         public void SubscribeToEvent(UDPServer server)
         {
             server.DataReceivedEvent += server_DataReceivedEvent;
